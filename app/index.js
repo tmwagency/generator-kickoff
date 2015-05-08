@@ -140,6 +140,56 @@ KickoffGenerator.prototype.askFor = function () {
 	}.bind(this));
 };
 
+// Generates various Grunt arrays and options
+KickoffGenerator.prototype.generateOptions = function generateOptions() {
+
+	/**
+	 * Grunt
+	 */
+	var serve = [];
+	var dev = [];
+	var deploy = [];
+	var styleguide = [];
+
+	var shimlyTask = this.shimly ? "'shimly'" : [];
+
+	var jsTasks = this.browserify ? "'newer:browserify:prod'" : "'chotto:js', 'uglify'";
+
+	var cssTasks  = "'sass', 'autoprefixer', 'clean:tempCSS'";
+	var cssMinTask = "'csso'";
+
+	var statixCleanTask = this.statix ? "'clean:all'" : [];
+	var statixTasks = this.statix ? "'copy', 'assemble'" : [];
+
+	var modernizrTask = "'copy:modernizr'";
+
+	var imageTasks = "'icons', 'imagemin:images'";
+
+	var serverTask = "'browserSync:serve'";
+	var serverStyleguideTask = "'browserSync:styleguide'";
+
+	var watchTask = "'watch'";
+
+	this.taskArrayServe = serve.concat(shimlyTask, jsTasks, cssTasks, modernizrTask, imageTasks, statixTasks, serverTask, watchTask);
+
+	this.taskArrayDev = dev.concat(shimlyTask, jsTasks, cssTasks, modernizrTask, imageTasks, statixTasks);
+
+	this.taskArrayDeploy = deploy.concat(shimlyTask, jsTasks, cssTasks, cssMinTask, modernizrTask, imageTasks, statixTasks);
+
+	this.taskArrayStyleguide = styleguide.concat(shimlyTask, jsTasks, cssTasks, modernizrTask, imageTasks, statixTasks, serverStyleguideTask, watchTask);
+
+
+
+	/**
+	 * Package.json
+	 */
+
+
+	/**
+	 * Javascript fileList
+	 */
+};
+
 
 KickoffGenerator.prototype.packageFiles = function packageFiles() {
 	this.template('./_index.html', './index.html');

@@ -42,83 +42,28 @@ module.exports = function (grunt) {
 	 * GRUNT SERVE * A task for a static server with a watch
 	 * run browserSync and watch
 	 */
-	grunt.registerTask('serve', [
-		<% if (statix === true) {%>'clean:all',<% } %>
-		<% if (shims === true) {%>'shimly',<% } %>
-		<% if (browserify === true) {%>'newer:browserify:prod',
-		<% } else { %>'chotto:js',
-		'uglify',<% } %>
-		'sass',
-		'autoprefixer',
-		'clean:tempCSS',
-		'copy:modernizr',
-		<% if (statix === true) {%>'copy',
-		'assemble',<% } %>
-		'browserSync:serve',
-		'watch'
-	]);
+	grunt.registerTask('serve', [<%= taskArrayServe %>]);
 
 
 	/**
 	 * GRUNT DEV * A task for development
 	 * run uglify, sass:kickoff & autoprefixer:kickoff
 	 */
-	grunt.registerTask('dev', [
-		<% if (statix === true) {%>'clean:all',<% } %>
-		<% if (shims === true) {%>'shimly',<% } %>
-		<% if (browserify === true) {%>
-		'newer:browserify:prod',
-		<% } else { %>
-		'chotto:js',
-		'uglify',
-		<% } %>
-		'sass',
-		'autoprefixer',
-		'clean:tempCSS',
-		'copy:modernizr'<% if (statix === true) {%>,
-		'copy',
-		'assemble'<% } %>
-	]);
+	grunt.registerTask('dev', [<%= taskArrayDev %>]);
 
 
 	/**
 	 * GRUNT DEPLOY * A task for your production environment
 	 * run jshint, uglify and sass:production
 	 */
-	grunt.registerTask('deploy', [
-		<% if (statix === true) {%>'clean:all',<% } %>
-		<% if (shims === true) {%>'shimly',<% } %>
-		<% if (browserify === true) {%>'newer:browserify:prod',
-		<% } else { %>'chotto:js',
-		'uglify',<% } %>
-		'sass',
-		'autoprefixer',
-		'csso',
-		'clean:tempCSS',
-		'copy:modernizr'<% if (statix === true) {%>,
-		'copy',
-		'assemble'<% } %>
-	]);
+	grunt.registerTask('deploy', [<%= taskArrayDeploy %>]);
 
 
 	/**
 	 * GRUNT STYLEGUIDE * A task for the styleguide
 	 * run uglify, sass:kickoff, sass:styleguide, autoprefixer:kickoff, autoprefixer:styleguide, connect:styleguide & watch
 	 */
-	grunt.registerTask('styleguide', [
-		<% if (statix === true) {%>'clean:all',<% } %>
-		<% if (shims === true) {%>'shimly',<% } %>
-		<% if (browserify === true) {%>'newer:browserify:prod',
-		<% } else { %>'chotto:js',
-		'uglify',<% } %>
-		'sass',
-		'autoprefixer',
-		'clean:tempCSS',
-		'copy:modernizr',
-		<% if (statix === true) {%>'copy',
-		'assemble',<% } %>
-		'browserSync:styleguide'
-	]);<% if (grunticon === true) {%>
+	grunt.registerTask('styleguide', [<%= taskArrayStyleguide %>]);<% if (grunticon === true) {%>
 
 
 	/**
