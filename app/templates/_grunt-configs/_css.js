@@ -13,10 +13,15 @@ module.exports.tasks = {
 				sourceMap : true
 			},
 			files: {
-				'<%%=config.tempDir%>/css/<%%=config.css.distFile%>.css' : '<%%=config.css.scssDir%>/kickoff.scss'<% if (oldIE === true) {%>,
-				'<%%=config.tempDir%>/css/<%%=config.css.distFile%>-old-ie.css': '<%%=config.css.scssDir%>/kickoff-old-ie.scss'<% } %>
+				'<%%=config.tempDir%>/css/<%%=config.css.distFile%>.css' : '<%%=config.css.scssDir%>/kickoff.scss'<%
+				if (oldIE === true) {
+					%>,
+				'<%%=config.tempDir%>/css/<%%=config.css.distFile%>-old-ie.css': '<%%=config.css.scssDir%>/kickoff-old-ie.scss'<%
+				} %>
 			}
-		}<% if (styleguide === true) {%>,
+		}<%
+		if (styleguide === true) {
+		%>,
 
 		styleguide: {
 			options: {
@@ -26,7 +31,9 @@ module.exports.tasks = {
 			files: {
 				'<%%=config.tempDir%>/css/styleguide.css' : '<%%=config.css.scssDir%>/styleguide.scss'
 			}
-		}<% } %>
+		}<%
+		// end of styleguide conditional
+		} %>
 	},
 
 
@@ -62,8 +69,11 @@ module.exports.tasks = {
 				restructure: false //turns structural optimisations off as can mess up fallbacks http://bem.info/tools/optimizers/csso/description/
 			},
 			files: {
-				'<%%=config.css.distDir%>/<%%=config.css.distFile%>.css'       : '<%%=config.css.distDir%>/<%%=config.css.distFile%>.css'<% if (oldIE === true) {%>,
-				'<%%=config.css.distDir%>/<%%=config.css.distFile%>-old-ie.css': '<%%=config.css.distDir%>/<%%=config.css.distFile%>-old-ie.css'<% } %>
+				'<%%=config.css.distDir%>/<%%=config.css.distFile%>.css'       : '<%%=config.css.distDir%>/<%%=config.css.distFile%>.css'<%
+				if (oldIE === true) {
+					%>,
+				'<%%=config.css.distDir%>/<%%=config.css.distFile%>-old-ie.css': '<%%=config.css.distDir%>/<%%=config.css.distFile%>-old-ie.css'<%
+				} %>
 			},
 		}
 	}

@@ -9,7 +9,7 @@ module.exports.tasks = {
 		serve: {
 			bsFiles: {
 				src: [
-					<% if (statix == true) {%>
+					<% if (statix == true) { %>
 						'<%%= config.statix.dir%>/dist/assets/css/*.css',
 						'<%%= config.statix.dir%>/dist/**/*.html',
 						'<%%=config.js.distDir%>/**/*.js'
@@ -23,7 +23,7 @@ module.exports.tasks = {
 			options: {
 				watchTask: true,
 				server: {
-				<% if (statix == true) {%>
+				<% if (statix == true) { %>
 					baseDir: './<%%= config.statix.dir%>/dist'
 				<% } else { %>
 					baseDir: './'
@@ -48,7 +48,10 @@ module.exports.tasks = {
 				}
 			}
 		}
-	}<% if (statix === true) {%>,
+	}<%
+// if statix is being used, include assemble task
+if (statix === true) {
+%>,
 
 
 	/**
@@ -78,5 +81,7 @@ module.exports.tasks = {
 				src: ['**/*.{hbs,md}']
 			}]
 		}
-	}<% } %>
+	}<%
+} //end of statix conditional
+%>
 };

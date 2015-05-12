@@ -4,14 +4,20 @@ module.exports = function (grunt) {
 	var options = {
 		pkg: require('./package'), // <%%=pkg.name%>
 
-		<% if (statix == true) {%>site: grunt.file.readYAML('statix/src/data/site.yml'),<% } %>
+		<% if (statix == true) {
+			%>site: grunt.file.readYAML('statix/src/data/site.yml'),<%
+		} %>
 
 		// Global Grunt vars. Edit this file to change vars
 		config : require('./_grunt-configs/config.js')
 	};
 
 	// Load grunt tasks automatically
-	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto"<% if (statix === true) {%>, "assemble"<% } %>]});
+	require('load-grunt-tasks')(grunt, {pattern: ["grunt-*", "chotto"<%
+		if (statix === true) {
+			%>, "assemble"<%
+		}
+	%>]});
 
 	// Load grunt configurations automatically
 	var configs = require('load-grunt-configs')(grunt, options);
@@ -63,9 +69,10 @@ module.exports = function (grunt) {
 	 * GRUNT STYLEGUIDE * A task for the styleguide
 	 * run uglify, sass:kickoff, sass:styleguide, autoprefixer:kickoff, autoprefixer:styleguide, connect:styleguide & watch
 	 */
-	grunt.registerTask('styleguide', [<%= taskArrayStyleguide %>]);<% if (grunticon === true) {%>
+	grunt.registerTask('styleguide', [<%= taskArrayStyleguide %>]);
 
-
+<% if (grunticon === true) {
+%>
 	/**
 	 * GRUNT ICONS * A task to create all icons using grunticon
 	 * run clean, svgmin and grunticon
@@ -74,9 +81,10 @@ module.exports = function (grunt) {
 		'clean:icons',
 		'imagemin:grunticon',
 		'grunticon'
-	]);<% } %>
+	]);
 
-
+<% }
+%>
 	/**
 	 * GRUNT CHECKS * Check code for errors
 	 * run jshint

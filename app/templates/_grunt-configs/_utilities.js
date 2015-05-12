@@ -7,8 +7,11 @@ module.exports.tasks = {
 	 */
 	clean: {
 		icons   : ['<%%=config.distDir%>/img/icons', '<%%=config.tempDir%>/icons'],
-		tempCSS : ['<%%=config.tempDir%>/css']<% if (statix === true) {%>,
-		all: ['<%%= config.statix.dir%>/dist/**/*.html']<% } %>
+		tempCSS : ['<%%=config.tempDir%>/css']<%
+		if (statix === true) {
+			%>,
+		all: ['<%%= config.statix.dir%>/dist/**/*.html']<%
+		} %>
 	},
 
 
