@@ -41,14 +41,39 @@ module.exports = {
 
 		// <%%=config.js.fileList%>
 		fileList : [
-			<% if (jsLibs.indexOf('jquery1') != -1 || jsLibs.indexOf('jquery2') != -1) {%>'./node_modules/jquery/dist/jquery.js',<% if (jsLibs.indexOf('jquery1') != -1) {%> /* jQuery v1.x */<% } %><% if (jsLibs.indexOf('jquery2') != -1) {%> /* jQuery v2.x */<% } %><% } %>
-			<% if (shims === true) {%>'<%%=config.srcDir%>/js/helpers/shims.js',<% } %>
-			'<%%=config.srcDir%>/js/helpers/console.js',<% if (jsLibs.indexOf('swiftclick') != -1) {%>
-			'./node_modules/swiftclick/js/libs/swiftclick.js',<% } %><% if (jsLibs.indexOf('trak') != -1) {%>
-			'./node_modules/trak.js/dist/trak.js',<% } %><% if (jsLibs.indexOf('cookies') != -1) {%>
-			'./node_modules/cookies-js/dist/cookies.js',<% } %>
-			'<%%=config.srcDir%>/js/script.js'
-		]<% } %>
+				<% if (jsLibs.indexOf('jquery1') != -1 || jsLibs.indexOf('jquery2') != -1) {
+				%>'./node_modules/jquery/dist/jquery.js',<%
+						if (jsLibs.indexOf('jquery1') != -1) {
+					%> /* jQuery v1.x */<%
+					} if (jsLibs.indexOf('jquery2') != -1) {
+						%> /* jQuery v2.x */<%
+					}
+				}
+				// if shimly is being used, add path to config
+				if (shims === true) { %>
+				'<%%=config.srcDir%>/js/helpers/shims.js',<%
+				} %>
+				'<%%=config.srcDir%>/js/helpers/console.js',<%
+
+				// if swiftclick is being used, add path to config
+				if (jsLibs.indexOf('swiftclick') != -1) {
+				%>
+				'./node_modules/swiftclick/js/libs/swiftclick.js',<%
+				}
+				// if trak is being used, add path to config
+				if (jsLibs.indexOf('trak') != -1) {
+				%>
+				'./node_modules/trak.js/dist/trak.js',<%
+				}
+				// if cookies is being used, add path to config
+				if (jsLibs.indexOf('cookies') != -1) {
+				%>
+				'./node_modules/cookies-js/dist/cookies.js',<%
+				}
+				%>
+				'<%%=config.srcDir%>/js/script.js'
+		]<%
+		} %>
 	},
 
 
