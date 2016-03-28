@@ -30,7 +30,7 @@
     "generators"
   ],
   "dependencies": {
-    "chalk": "^1.1.1",
+    "chalk": "^1.1.2",
     "opn": "^3.0.3",
     "underscore.string": "^3.2.2",
     "update-notifier": "^0.5.0",
