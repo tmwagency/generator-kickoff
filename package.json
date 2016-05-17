@@ -31,7 +31,7 @@
   ],
   "dependencies": {
     "chalk": "^1.1.1",
-    "opn": "^3.0.3",
+    "opn": "^4.0.2",
     "underscore.string": "^3.2.2",
     "update-notifier": "^0.5.0",
     "yeoman-generator": "^0.21.1",
