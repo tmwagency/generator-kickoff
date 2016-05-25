@@ -39,6 +39,6 @@
     "yo": ">=1.5.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "2.5.3"
   }
 }
