@@ -40,6 +40,6 @@
     "update-notifier": "^0.7.0",
     "update-section": "^0.3.3",
     "yeoman-generator": "^0.23.3",
-    "yosay": "^1.1.1"
+    "yosay": "^1.2.0"
   }
 }
